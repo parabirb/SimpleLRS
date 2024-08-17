@@ -1,5 +1,5 @@
 # SimpleLRS
-A simple, public domain JavaScript implementation of [an efficient linkable ring signature algorithm](https://bitcointalk.org/index.php?topic=972541.msg10619684#msg10619684) (specifically, a variation of LSAG) using [noble](https://github.com/paulmillr/noble-curves)'s implementation of Ristretto255. For a more readable description of the ring signature algorithm, See Section 2.1 of [this preprint](https://eprint.iacr.org/2015/1098.pdf) in the IACR archive.
+A simple, public domain JavaScript implementation of [an efficient linkable ring signature algorithm](https://bitcointalk.org/index.php?topic=972541.msg10619684#msg10619684) (specifically, a variation of LSAG) using [noble](https://github.com/paulmillr/noble-curves)'s implementation of Ristretto255. For a more readable description of the ring signature algorithm, see Section 2.1 of [this preprint](https://eprint.iacr.org/2015/1098.pdf) in the IACR archive.
 
 **NOTE: Do NOT use this in critical applications. This library has NOT been audited, and implements an algorithm literally described in a Bitcoin forum. Consider this a toy library.**
 
@@ -17,7 +17,7 @@ SimpleLRS provides 7 simple functions:
 - `verify(msg: Uint8Array, sig: Uint8Array, ring: Uint8Array(32)[]): boolean`: Verifies a ring signature. Returns either true or false.
 - `link(sig1: Uint8Array, sig2: Uint8Array): boolean`: Checks the key image of both signatures and returns true if the signatures are linked. Note that for signatures to be linked, they must be signed in the same ring. This method **DOES NOT** verify the signatures; you need to use the `verify` method first before checking with `link`.
 - `schnorrSign(msg: Uint8Array, secretKey: Uint8Array(32)): Uint8Array(64)`: Creates a 64-byte Schnorr signature for the message with your secret key.
-- `schnorrVerify(msg: Uint8Array, sig: Uint8Array(64), publicKey: Uint8Array(32)): boolean`: Checks a Schnorr signature against the public key. Returnns true if the signature is valid, and false if it isn't.
+- `schnorrVerify(msg: Uint8Array, sig: Uint8Array(64), publicKey: Uint8Array(32)): boolean`: Checks a Schnorr signature against the public key. Returns true if the signature is valid, and false if it isn't.
 - `ecdh(secretKey: Uint8Array(32), publicKey: Uint8Array(32))`: Performs ECDH and returns a shared secret. No further processing of the output is required, as this method does it for you.
 - `getPublicKey(secretKey: Uint8Array(32)): Uint8Array(32)`: Returns the public key for a given secret key.
 
